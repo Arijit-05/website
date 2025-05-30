@@ -10,12 +10,49 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* Base styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
-            cursor: none;
+        }
+
+        /* Custom cursor styles */
+        @media (hover: hover) {
+            * {
+                cursor: none;
+            }
+
+            .cursor {
+                width: 20px;
+                height: 20px;
+                border: 2px solid var(--primary-color);
+                border-radius: 50%;
+                position: fixed;
+                pointer-events: none;
+                z-index: 9999;
+                transition: transform 0.2s ease;
+                transform: translate(-50%, -50%);
+            }
+
+            .cursor-dot {
+                width: 4px;
+                height: 4px;
+                background: var(--primary-color);
+                border-radius: 50%;
+                position: fixed;
+                pointer-events: none;
+                z-index: 9999;
+                transition: transform 0.1s ease;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        @media (hover: none) {
+            .cursor, .cursor-dot {
+                display: none;
+            }
         }
 
         :root {
@@ -788,31 +825,6 @@
                 padding: 10px 15px;
             }
         }
-
-        /* Add cursor animation */
-        .cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--primary-color);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.2s ease;
-            transform: translate(-50%, -50%);
-        }
-
-        .cursor-dot {
-            width: 4px;
-            height: 4px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.1s ease;
-            transform: translate(-50%, -50%);
-        }
     </style>
 </head>
 <body>
@@ -1085,41 +1097,6 @@
             window.location.href = `mailto:your@email.com?subject=${subject}&body=${body}`;
         });
 
-        // Cursor Animation
-        const cursor = document.querySelector('.cursor');
-        const cursorDot = document.querySelector('.cursor-dot');
-
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            cursorDot.style.left = e.clientX + 'px';
-            cursorDot.style.top = e.clientY + 'px';
-        });
-
-        document.addEventListener('mousedown', () => {
-            cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
-            cursorDot.style.transform = 'translate(-50%, -50%) scale(0.8)';
-        });
-
-        document.addEventListener('mouseup', () => {
-            cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-            cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
-        });
-
-        // Add hover effect for interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, .project-card, .skill-tag');
-        interactiveElements.forEach(element => {
-            element.addEventListener('mouseenter', () => {
-                cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
-                cursorDot.style.transform = 'translate(-50%, -50%) scale(1.5)';
-            });
-            
-            element.addEventListener('mouseleave', () => {
-                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-                cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
-            });
-        });
-
         // Header Scroll Effect
         function handleHeaderScroll() {
             const nav = document.querySelector('nav');
@@ -1143,6 +1120,43 @@
         function toggleUpiDetails() {
             const upiDetails = document.querySelector('.upi-details');
             upiDetails.classList.toggle('show');
+        }
+
+        // Cursor Animation (only for devices with hover capability)
+        if (window.matchMedia('(hover: hover)').matches) {
+            const cursor = document.querySelector('.cursor');
+            const cursorDot = document.querySelector('.cursor-dot');
+
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                cursorDot.style.left = e.clientX + 'px';
+                cursorDot.style.top = e.clientY + 'px';
+            });
+
+            document.addEventListener('mousedown', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
+                cursorDot.style.transform = 'translate(-50%, -50%) scale(0.8)';
+            });
+
+            document.addEventListener('mouseup', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
+            });
+
+            // Add hover effect for interactive elements
+            const interactiveElements = document.querySelectorAll('a, button, .project-card, .skill-tag');
+            interactiveElements.forEach(element => {
+                element.addEventListener('mouseenter', () => {
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                    cursorDot.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                });
+                
+                element.addEventListener('mouseleave', () => {
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                    cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
+                });
+            });
         }
     </script>
 </body>
