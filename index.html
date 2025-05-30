@@ -435,7 +435,7 @@
 
         .skill-tag:hover {
             transform: translateY(-2px);
-            background-color: #5548c8;
+            background-color: #0d3700;
         }
 
         @keyframes fadeIn {
@@ -498,13 +498,72 @@
 
         /* Support Section */
         #support {
-            background-color: var(--secondary-color);
+            background: linear-gradient(-45deg, 
+                var(--secondary-color), 
+                var(--primary-color), 
+                var(--secondary-color), 
+                var(--primary-color));
+            background-size: 400% 400%;
+            animation: supportGradient 15s ease infinite;
+            position: relative;
+            overflow: hidden;
             text-align: center;
+        }
+
+        @keyframes supportGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .support-content {
             max-width: 600px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .support-content h2 {
+            color: var(--text-color);
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .support-content p {
+            color: var(--text-color);
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+            animation-delay: 0.3s;
+        }
+
+        .donate-button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+            animation-delay: 0.6s;
+        }
+
+        .donate-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background: #0d3700;
         }
 
         .upi-details {
@@ -513,11 +572,38 @@
             background-color: var(--card-bg);
             border-radius: 10px;
             box-shadow: 0 4px 6px var(--shadow-color);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            display: none;
         }
 
-        .upi-details:hover {
-            transform: translateY(-5px);
+        .upi-details.show {
+            display: block;
+            animation: slideUp 0.5s ease forwards;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .upi-details h3 {
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+
+        .upi-details img {
+            max-width: 200px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px var(--shadow-color);
         }
 
         /* Contact Section */
@@ -591,7 +677,7 @@
             transition: background 0.2s;
         }
         .contact-form button:hover {
-            background: #5548c8;
+            background: #0d3700;
         }
 
         /* Responsive Design */
@@ -797,36 +883,40 @@
         <div class="container">
             <h2>Projects</h2>
             <div class="projects-grid">
+
                 <div class="project-card">
-                    <img src="placeholder.jpg" alt="Project 1" class="project-img" />
+                    <img src="fomodoro_img.png" alt="Project 1" class="project-img" />
                     <h3>Fomodoro - BETA</h3>
                     <p>A minimal Pomodoro timer app built with Kotlin and material UI to help users stay focused and productive through timed sessions. It features a clean UI and local state management for session tracking.</p>
                     <a href="https://github.com/Arijit-05/Fomodoro" target="_blank">View Project →</a>
                 </div>
+
                 <div class="project-card">
-                    <img src="placeholder.jpg" alt="Project 2" class="project-img" />
-                    <h3>QuitBuddy - ALPHA</h3>
-                    <p>A quit smoking companion app developed using Kotlin. It tracks progress, helps manage cravings, provides motivational content, and encourages users to build healthier habits over time.</p>
-                    <a href="https://github.com/Arijit-05/Quit_buddy" target="_blank">View Project →</a>
+                    <img src="more_projects.png" alt="Project 2" class="project-img" />
+                    <h3>More projects coming soon!</h3>
+                    <p>This is just the beginning—I'm actively working on new and exciting projects that will be added here shortly. Stay tuned to see what's next!</p>
                 </div>
-                <div class="project-card">
+
+                <!-- <div class="project-card">
                     <img src="placeholder.jpg" alt="Project 3" class="project-img" />
                     <h3>Budget Tracker</h3>
                     <p>A simple daily expense tracking app created with Kotlin, Room Database, and Material Design. It helps users monitor spending, categorize expenses, and stay on top of their monthly budget.</p>
                     <a href="https://github.com/Arijit-05/budget_app" target="_blank">View Project →</a>
-                </div>
-                <div class="project-card">
+                </div> -->
+                
+                <!-- <div class="project-card">
                     <img src="placeholder.jpg" alt="Project 3" class="project-img" />
                     <h3>Budget Tracker</h3>
                     <p>A simple daily expense tracking app created with Kotlin, Room Database, and Material Design. It helps users monitor spending, categorize expenses, and stay on top of their monthly budget.</p>
                     <a href="https://github.com/Arijit-05/budget_app" target="_blank">View Project →</a>
-                </div>
-                <div class="project-card">
+                </div> -->
+
+                <!-- <div class="project-card">
                     <img src="placeholder.jpg" alt="Project 3" class="project-img" />
                     <h3>Budget Tracker</h3>
                     <p>A simple daily expense tracking app created with Kotlin, Room Database, and Material Design. It helps users monitor spending, categorize expenses, and stay on top of their monthly budget.</p>
                     <a href="https://github.com/Arijit-05/budget_app" target="_blank">View Project →</a>
-                </div>
+                </div> -->
             
             </div>
         </div>
@@ -836,12 +926,12 @@
         <div class="container">
             <div class="support-content">
                 <h2>Support My Work</h2>
-                <p>Your support helps me create more amazing projects and keeps me motivated to continue learning and building.</p>
+                <p>Love what you see? 👀 Your support helps me create more awesome stuff and stay motivated! Every little bit means a lot 🙌❤️</p>
+                <button class="donate-button" onclick="toggleUpiDetails()">Donate</button>
                 <div class="upi-details">
-                    <h3>UPI ID: your.upi@id</h3>
+                    <h3>UPI ID: royarijitaugust2005@okhdfcbank</h3>
                     <p>Scan the QR code below to support:</p>
-                    <!-- Add your QR code image here -->
-                    <img src="qr-code-placeholder.png" alt="UPI QR Code" style="max-width: 200px; margin-top: 20px;">
+                    <img src="qr.jpeg" alt="UPI QR Code">
                 </div>
             </div>
         </div>
@@ -868,9 +958,9 @@
                 <button type="submit">Send Message</button>
             </form>
             <div class="contact-links">
-                <a href="https://github.com/yourusername" target="_blank" title="GitHub"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://github.com/Arijit-05" target="_blank" title="GitHub"><i class="fab fa-github"></i> GitHub</a>
                 <!-- <a href="https://linkedin.com/in/yourusername" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i> LinkedIn</a> -->
-                <a href="https://instagram.com/yourusername" target="_blank" title="Instagram"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://instagram.com/x.arzzz_" target="_blank" title="Instagram"><i class="fab fa-instagram"></i> Instagram</a>
             </div>
         </div>
     </section>
@@ -960,7 +1050,7 @@
         
         // Start the text rotation after initial fade in
         setTimeout(() => {
-            setInterval(fadeText, 3000);
+            setInterval(fadeText, 2000);
         }, 1600);
 
         // Smooth scroll for nav links
@@ -1045,6 +1135,12 @@
 
         // Add scroll event listener
         window.addEventListener('scroll', handleHeaderScroll);
+
+        // Toggle UPI Details
+        function toggleUpiDetails() {
+            const upiDetails = document.querySelector('.upi-details');
+            upiDetails.classList.toggle('show');
+        }
     </script>
 </body>
 </html> 
