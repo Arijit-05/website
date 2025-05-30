@@ -1,5 +1,5 @@
 ## 🚀 Check out my website
-🔗 **Live Site**: [http://bit.ly/3HipGq4](http://bit.ly/3HipGq4)
+🔗 **Live Site**: [https://shorturl.at/MKBcB](https://shorturl.at/MKBcB)
 
 ## 🧩 Features
 
