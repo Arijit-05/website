@@ -536,188 +536,145 @@
             background: #eaeaea;
         }
 
-        /* Support Section */
-        #support {
+        /* Testimonial Section Styles */
+        #testimonials {
             background: linear-gradient(-45deg, 
                 var(--secondary-color), 
                 var(--primary-color), 
                 var(--secondary-color), 
                 var(--primary-color));
             background-size: 400% 400%;
-            animation: supportGradient 15s ease infinite;
+            animation: aboutGradient 15s ease infinite;
             position: relative;
             overflow: hidden;
             text-align: center;
         }
-
-        @keyframes supportGradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        .support-content {
-            max-width: 600px;
+        .testimonial-content {
+            max-width: 900px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
         }
-
-        .support-content h2 {
-            color: var(--text-color);
-            margin-bottom: 20px;
-            opacity: 0;
-            animation: fadeIn 1s ease forwards;
-        }
-
-        .support-content p {
+        .testimonial-content h2 {
             color: var(--text-color);
             margin-bottom: 30px;
             opacity: 0;
             animation: fadeIn 1s ease forwards;
-            animation-delay: 0.3s;
         }
-
-        .donate-button {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-size: 1.1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-bottom: 20px;
-            opacity: 0;
-            animation: fadeIn 1s ease forwards;
-            animation-delay: 0.6s;
-        }
-
-        .donate-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            background: #0d3700;
-        }
-
-        .upi-details {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: var(--card-bg);
-            border-radius: 10px;
-            box-shadow: 0 4px 6px var(--shadow-color);
-            transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(20px);
-            display: none;
-        }
-
-        .upi-details.show {
-            display: block;
-            animation: slideUp 0.5s ease forwards;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .upi-details h3 {
-            color: var(--text-color);
-            margin-bottom: 15px;
-        }
-
-        .upi-details img {
-            max-width: 200px;
-            margin-top: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px var(--shadow-color);
-        }
-
-        /* Contact Section */
-        .contact-links {
+        .testimonial-carousel-wrapper {
             display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 30px;
-            margin-top: 30px;
-            margin-bottom: 0;
+            gap: 0;
+            position: relative;
         }
-
-        .contact-links a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease, transform 0.3s ease;
-            display: inline-block;
-            font-size: 1.3rem;
+        .testimonial-carousel {
+            display: flex;
+            overflow: hidden;
+            width: 600px;
+            height: 400px;
+            position: relative;
+            margin: 0 20px;
         }
-
-        .contact-links a:hover {
-            color: var(--text-color);
-            transform: translateY(-2px);
-        }
-
-        .contact-form {
-            max-width: 500px;
-            margin: 40px auto 0 auto;
-            background: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 2px 12px var(--shadow-color);
-            padding: 32px 24px;
+        .testimonial-slide {
+            min-width: 100%;
+            opacity: 0;
+            transform: scale(0.9) translateX(40px);
+            transition: opacity 0.6s cubic-bezier(.77,0,.18,1), transform 0.6s cubic-bezier(.77,0,.18,1);
             display: flex;
             flex-direction: column;
-            gap: 18px;
-        }
-        .contact-form label {
-            font-weight: 500;
-            margin-bottom: 6px;
-            color: var(--primary-color);
-        }
-        .contact-form input,
-        .contact-form textarea {
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left: 0;
+            top: 0;
             width: 100%;
-            padding: 10px 14px;
-            border: 1.5px solid var(--primary-color);
-            border-radius: 6px;
-            font-size: 1rem;
-            background: var(--background-color);
+            height: 100%;
+            pointer-events: none;
+        }
+        .testimonial-slide.active {
+            opacity: 1;
+            transform: scale(1) translateX(0);
+            pointer-events: auto;
+            z-index: 2;
+        }
+        .testimonial-img {
+            width: 520px;
+            height: 520px;
+            border-radius: 18px;
+            object-fit: contain;
+            border: 4px solid var(--primary-color);
+            box-shadow: 0 4px 16px var(--shadow-color);
+            margin-bottom: 18px;
+            background: #eaeaea;
+            transition: border 0.3s;
+        }
+        .testimonial-text {
+            font-size: 1.1rem;
             color: var(--text-color);
-            transition: border 0.2s;
+            margin-bottom: 10px;
+            font-style: italic;
+            opacity: 0.9;
         }
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            border: 2px solid var(--primary-color);
+        .testimonial-author {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1rem;
         }
-        .contact-form textarea {
-            min-height: 90px;
-            resize: vertical;
-        }
-        .contact-form button {
+        .testimonial-nav {
             background: var(--primary-color);
             color: #fff;
             border: none;
-            border-radius: 6px;
-            padding: 12px 0;
-            font-size: 1.1rem;
-            font-weight: 600;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            font-size: 1.5rem;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: background 0.2s, transform 0.2s;
+            box-shadow: 0 2px 8px var(--shadow-color);
+            z-index: 3;
         }
-        .contact-form button:hover {
+        .testimonial-nav:hover {
             background: #0d3700;
+            transform: scale(1.1);
+        }
+        .reddit-thread-btn {
+            display: inline-block;
+            margin-top: 32px;
+            background: #ff4500;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            padding: 12px 32px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+        .reddit-thread-btn:hover {
+            background: #d13a00;
+            transform: translateY(-3px) scale(1.05);
+        }
+        @media (max-width: 700px) {
+            .testimonial-carousel {
+                width: 95vw;
+                height: 220px;
+            }
+            .testimonial-img {
+                width: 90vw;
+                height: 160px;
+            }
+        }
+        @media (max-width: 480px) {
+            .testimonial-carousel {
+                width: 98vw;
+                height: 160px;
+            }
+            .testimonial-img {
+                width: 96vw;
+                height: 110px;
+            }
         }
 
         /* Responsive Design */
@@ -825,6 +782,96 @@
                 padding: 10px 15px;
             }
         }
+
+        /* Contact Section Fixes */
+        .contact-form {
+            max-width: 500px;
+            margin: 40px auto 0 auto;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 2px 12px var(--shadow-color);
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .contact-form label {
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: var(--primary-color);
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1.5px solid var(--primary-color);
+            border-radius: 6px;
+            font-size: 1rem;
+            background: var(--background-color);
+            color: var(--text-color);
+            transition: border 0.2s;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border: 2px solid var(--primary-color);
+        }
+        .contact-form textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+        .contact-form button {
+            background: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .contact-form button:hover {
+            background: #0d3700;
+        }
+        .contact-form-row {
+            display: flex;
+            gap: 12px;
+        }
+        .contact-form-row > div {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        @media (max-width: 700px) {
+            .contact-form {
+                padding: 20px 10px;
+            }
+            .contact-form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-top: 30px;
+            margin-bottom: 0;
+        }
+        .contact-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+            font-size: 1.3rem;
+        }
+        .contact-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
@@ -842,7 +889,7 @@
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
                 <a href="#projects">Projects</a>
-                <a href="#support">Support</a>
+                <a href="#testimonials">Testimonials</a>
                 <a href="#contact">Contact</a>
                 <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
             </div>
@@ -944,17 +991,37 @@
         </div>
     </section>
 
-    <section id="support">
+    <section id="testimonials">
         <div class="container">
-            <div class="support-content">
-                <h2>Support My Work</h2>
-                <p>Love what you see? 👀 Your support helps me create more awesome stuff and stay motivated! Every little bit means a lot 🙌❤️</p>
-                <button class="donate-button" onclick="toggleUpiDetails()">Donate</button>
-                <div class="upi-details">
-                    <h3>UPI ID: royarijitaugust2005@okhdfcbank</h3>
-                    <p>Scan the QR code below to support:</p>
-                    <img src="assets/qr.jpeg" alt="UPI QR Code">
+            <div class="testimonial-content">
+                <h2>Testimonials</h2>
+                <div class="testimonial-carousel-wrapper">
+                    <button class="testimonial-nav prev" aria-label="Previous testimonial">&#8592;</button>
+                    <div class="testimonial-carousel">
+                        <div class="testimonial-slide active">
+                            <img src="assets/testimonials/fomodoro/5.png" alt="Testimonial 1" class="testimonial-img" />
+                            <span class="testimonial-author">— Fomodoro</span>
+                        </div>
+                        <div class="testimonial-slide">
+                            <img src="assets/testimonials/fomodoro/6.png" alt="Testimonial 2" class="testimonial-img" />
+                            <span class="testimonial-author">— Fomodoro</span>
+                        </div>
+                        <div class="testimonial-slide">
+                            <img src="assets/testimonials/fomodoro/7.png" alt="Testimonial 3" class="testimonial-img" />
+                            <span class="testimonial-author">— Fomodoro</span>
+                        </div>
+                        <div class="testimonial-slide">
+                            <img src="assets/testimonials/fomodoro/8.png" alt="Testimonial 3" class="testimonial-img" />
+                            <span class="testimonial-author">— Fomodoro</span>
+                        </div>
+                        <div class="testimonial-slide">
+                            <img src="assets/testimonials/fomodoro/9.png" alt="Testimonial 3" class="testimonial-img" />
+                            <span class="testimonial-author">— Fomodoro</span>
+                        </div>
+                    </div>
+                    <button class="testimonial-nav next" aria-label="Next testimonial">&#8594;</button>
                 </div>
+                <a href="https://www.reddit.com/r/androidapps/comments/1kv25oh/app_fomodoro_a_beautiful_pomodoro_timer_just_got/" target="_blank" class="reddit-thread-btn">View entire thread on reddit</a>
             </div>
         </div>
     </section>
@@ -963,12 +1030,12 @@
         <div class="container">
             <h2>Get in Touch</h2>
             <form class="contact-form" id="contactForm">
-                <div style="display: flex; gap: 12px;">
-                    <div style="flex:1;">
+                <div class="contact-form-row">
+                    <div>
                         <label for="firstName">First Name</label>
                         <input type="text" id="firstName" name="firstName" required autocomplete="given-name">
                     </div>
-                    <div style="flex:1;">
+                    <div>
                         <label for="lastName">Last Name</label>
                         <input type="text" id="lastName" name="lastName" required autocomplete="family-name">
                     </div>
@@ -1042,7 +1109,7 @@
             'an Android Developer 💚',
             'a UI/UX Enthusiast 🎉  ',
             'a Problem Solver 💡    ',
-            'a Tech Explorer 🌟     ',
+            'a Tech Explorer ��     ',
             'a Creative Developer 🎨'
         ];
         let currentIndex = 0;
@@ -1123,11 +1190,54 @@
         // Add scroll event listener
         window.addEventListener('scroll', handleHeaderScroll);
 
-        // Toggle UPI Details
-        function toggleUpiDetails() {
-            const upiDetails = document.querySelector('.upi-details');
-            upiDetails.classList.toggle('show');
-        }
+        // Testimonial Carousel Logic
+        (function() {
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const prevBtn = document.querySelector('.testimonial-nav.prev');
+            const nextBtn = document.querySelector('.testimonial-nav.next');
+            let current = 0;
+            let autoSlideInterval;
+
+            function showSlide(idx) {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === idx);
+                });
+            }
+
+            function nextSlide() {
+                current = (current + 1) % slides.length;
+                showSlide(current);
+            }
+
+            function prevSlide() {
+                current = (current - 1 + slides.length) % slides.length;
+                showSlide(current);
+            }
+
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(nextSlide, 3500);
+            }
+
+            function stopAutoSlide() {
+                clearInterval(autoSlideInterval);
+            }
+
+            if (slides.length > 0) {
+                showSlide(current);
+                startAutoSlide();
+
+                nextBtn.addEventListener('click', () => {
+                    stopAutoSlide();
+                    nextSlide();
+                    startAutoSlide();
+                });
+                prevBtn.addEventListener('click', () => {
+                    stopAutoSlide();
+                    prevSlide();
+                    startAutoSlide();
+                });
+            }
+        })();
 
         // Cursor Animation (only for devices with hover capability)
         if (window.matchMedia('(hover: hover)').matches) {
