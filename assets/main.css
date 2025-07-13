@@ -96,7 +96,7 @@ nav {
     border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 0;
     z-index: 1000;
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.3s ease;
 }
 
 nav.floating {
