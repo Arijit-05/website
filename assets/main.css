@@ -96,14 +96,13 @@ nav {
     border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 0;
     z-index: 1000;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 nav.floating {
     width: calc(100% - 200px);
-    top: 55px;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    left: 100px;
+    top: 20px;
     border-radius: 16px;
 }
 
@@ -755,6 +754,8 @@ footer {
 @media (max-width: 900px) {
     nav.floating {
         width: calc(100% - 60px);
+        left: 30px;
+        top: 15px;
     }
 
     .hamburger {
@@ -848,6 +849,8 @@ footer {
 @media (max-width: 480px) {
     nav.floating {
         width: calc(100% - 30px);
+        left: 15px;
+        top: 10px;
     }
 
     .testimonial-carousel {
