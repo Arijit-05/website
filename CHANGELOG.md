@@ -9,7 +9,6 @@ All notable changes to this project will be documented in this file.
 - Fix the aspect-ratio of the testimonial buttons
 - Refactor the cursor function on hover devices
 - Refactor the CSS code for better readability
-- Refactor the nav.floating form in CSS
 
 #### v0.0.1
 > 27 May 2025
